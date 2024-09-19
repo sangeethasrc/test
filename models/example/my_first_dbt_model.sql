@@ -10,15 +10,18 @@
 {{ config(materialized='table') }}
 
 with source_data as (
+    select * from raw.jaffle_shop.orders
 
-    select 1 as id
-    union all
-    select null as id
+   -- select 1 as id
+    --union all
+    --select null as id
 
 )
 
 select *
-from source_data
+from source_data --where user_id=1;
+
+--update source_data set status='completed' where user_id=1
 
 /*
     Uncomment the line below to remove records with null `id` values
